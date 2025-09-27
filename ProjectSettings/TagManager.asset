@@ -50,3 +50,12 @@ TagManager:
   - name: PointsOfInterest
     uniqueID: 2648648453
     locked: 0
+  - name: Protester1
+    uniqueID: 2557411609
+    locked: 0
+  - name: Protester2
+    uniqueID: 3108849765
+    locked: 0
+  - name: Protester3
+    uniqueID: 253513521
+    locked: 0

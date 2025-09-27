@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049874424922540055}
   - component: {fileID: 4343590003183434498}
+  - component: {fileID: 6229878798129633897}
   m_Layer: 0
   m_Name: pointOfInterest
   m_TagString: Untagged
@@ -140,3 +141,16 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6229878798129633897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305071402940886343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca5d2a187325f643b965e3aa7e00d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 0

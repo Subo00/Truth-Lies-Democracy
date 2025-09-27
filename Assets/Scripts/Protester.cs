@@ -1,6 +1,3 @@
-using Microsoft.Win32.SafeHandles;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum Body
@@ -68,62 +65,37 @@ public enum ChildHead
     HEAD4,
 }
 
+[ExecuteInEditMode]
 public class Protester : MonoBehaviour
 {
-    public Body Body;
-    public Color BodyColor;
-    public Eyes Eyes;
-    public HairType HairType;
-    public Color HairColor;
-    public Head Head;
-    public Mouth Mouth;
-    public Attachment Attachment;
+    [SerializeField] private Body Body;
+    [SerializeField] private Color BodyColor;
+    [SerializeField] private Eyes Eyes;
+    [SerializeField] private HairType HairType;
+    [SerializeField] private Color HairColor;
+    [SerializeField] private Head Head;
+    [SerializeField] private Mouth Mouth;
+    [SerializeField] private Attachment Attachment;
 
-    public ChildHairType ChildHairType;
-    public Color? ChildHairColor;
-    public ChildHead ChildHead;
+    [SerializeField] private ChildHairType ChildHairType;
+    [SerializeField] private Color ChildHairColor = Color.black;
+    [SerializeField] private ChildHead ChildHead;
 
-    public Protester(
-        Body body,
-        Color bodyColor,
-        Eyes eyes,
-        HairType hairType,
-        Color hairColor,
-        Head head,
-        Mouth mouth,
-        Attachment attachment,
+    [SerializeField] private SpriteRenderer BodySprite;
+    [SerializeField] private SpriteRenderer EyesSprite;
+    [SerializeField] private SpriteRenderer HairSprite;
+    [SerializeField] private SpriteRenderer HeadSprite;
+    [SerializeField] private SpriteRenderer MouthSprite;
+    [SerializeField] private SpriteRenderer ArmSprite;
+    [SerializeField] private SpriteRenderer AttachmentSprite;
 
-        ChildHairType childHairType = ChildHairType.NONE,
-        Color? childHairColor = null,
-        ChildHead childHead = ChildHead.NONE)
-    {
-        Body = body;
-        BodyColor = bodyColor;
-        Eyes = eyes;
-        HairType = hairType;
-        HairColor = hairColor;
-        Head = head;
-        Mouth = mouth;
-        Attachment = attachment;
+    [SerializeField] private SpriteRenderer ChildHairSprite;
+    [SerializeField] private SpriteRenderer ChildHeadSprite;
+    [SerializeField] private SpriteRenderer ChildFaceSprite;
 
-        ChildHairType = childHairType;
-        ChildHairColor = childHairColor;
-        ChildHead = childHead;
-    }
+    [SerializeField] private string sortingLayerName;
 
-    public SpriteRenderer BodySprite;
-    public SpriteRenderer EyesSprite;
-    public SpriteRenderer HairSprite;
-    public SpriteRenderer HeadSprite;
-    public SpriteRenderer MouthSprite;
-    public SpriteRenderer ArmSprite;
-    public SpriteRenderer AttachmentSprite;
-
-    public SpriteRenderer ChildHairSprite;
-    public SpriteRenderer ChildHeadSprite;
-    public SpriteRenderer ChildFaceSprite;
-
-    void Start()
+    void Update()
     {
         // Body
         BodySprite.sprite = Body switch
@@ -132,14 +104,14 @@ public class Protester : MonoBehaviour
             _ => Resources.Load<Sprite>("Images/Protester/body/body") as Sprite,
         };
         BodySprite.color = BodyColor;
-
+        BodySprite.sortingLayerName = sortingLayerName;
         // Eyes
         EyesSprite.sprite = Eyes switch
         {
             Eyes.ANGRY => Resources.Load<Sprite>("Images/Protester/head/eyes/eyesAngry") as Sprite,
             _ => Resources.Load<Sprite>("Images/Protester/head/eyes/eyes1") as Sprite,
         };
-
+        EyesSprite.sortingLayerName = sortingLayerName;
         // Hair
         HairSprite.sprite = HairType switch
         {
@@ -157,6 +129,7 @@ public class Protester : MonoBehaviour
             _ => null,
         };
         HairSprite.color = HairColor;
+        HairSprite.sortingLayerName = sortingLayerName;
 
         // Head
         HeadSprite.sprite = Head switch
@@ -166,7 +139,7 @@ public class Protester : MonoBehaviour
             Head.HEAD4 => Resources.Load<Sprite>("Images/Protester/head/Head/head4") as Sprite,
             _ => Resources.Load<Sprite>("Images/Protester/head/Head/head1") as Sprite,
         };
-
+        HeadSprite.sortingLayerName = sortingLayerName;
         // Mouth
         MouthSprite.sprite = Mouth switch
         {
@@ -174,12 +147,15 @@ public class Protester : MonoBehaviour
             Mouth.SMILING=> Resources.Load<Sprite>("Images/Protester/head/mouth/mouthSmiling") as Sprite,
             _ => Resources.Load<Sprite>("Images/Protester/head/mouth/mouthNeutral") as Sprite,
         };
-
+        MouthSprite.sortingLayerName = sortingLayerName;
         // Arm + Attachment
         if (Attachment == Attachment.SIGN)
         {
             ArmSprite.sprite = Resources.Load<Sprite>("Images/Protester/sign/signArm") as Sprite;
+            ArmSprite.color = BodyColor;
+            ArmSprite.sortingLayerName = sortingLayerName;
             AttachmentSprite.sprite = Resources.Load<Sprite>("Images/Protester/sign/sign") as Sprite;
+            AttachmentSprite.sortingLayerName = sortingLayerName;
             ChildHairSprite.sprite = null;
             ChildHeadSprite.sprite = null;
             ChildFaceSprite.sprite = null;
@@ -187,8 +163,10 @@ public class Protester : MonoBehaviour
         else if (Attachment == Attachment.CHILD)
         {
             ArmSprite.sprite = Resources.Load<Sprite>("Images/Protester/Child/adultArm") as Sprite;
+            ArmSprite.color = BodyColor;
+            ArmSprite.sortingLayerName = sortingLayerName;
             AttachmentSprite.sprite = Resources.Load<Sprite>("Images/Protester/Child/body") as Sprite;
-
+            AttachmentSprite.sortingLayerName = sortingLayerName;
             // Child Hair
             ChildHairSprite.sprite = ChildHairType switch
             {
@@ -198,11 +176,10 @@ public class Protester : MonoBehaviour
                 ChildHairType.HAIR4 => Resources.Load<Sprite>("Images/Protester/Child/Childhead/hair/hair4") as Sprite,
                 ChildHairType.HAIR5 => Resources.Load<Sprite>("Images/Protester/Child/Childhead/hair/hair5") as Sprite,
                 ChildHairType.HAIR6 => Resources.Load<Sprite>("Images/Protester/Child/Childhead/hair/hair6") as Sprite,
-                ChildHairType.HAIR7 => Resources.Load<Sprite>("Images/Protester/Child/Childhead/hair/hair7") as Sprite,
-                _ => null,
+                _ => Resources.Load<Sprite>("Images/Protester/Child/Childhead/hair/hair7") as Sprite
             };
-            ChildHairSprite.color = (Color) ChildHairColor;
-
+            ChildHairSprite.color = ChildHairColor;
+            ChildHairSprite.sortingLayerName = sortingLayerName;
             // Child Head
             ChildHeadSprite.sprite = ChildHead switch
             {
@@ -211,9 +188,10 @@ public class Protester : MonoBehaviour
                 ChildHead.HEAD4 => Resources.Load<Sprite>("Images/Protester/Child/Childhead/head/head4") as Sprite,
                 _ => Resources.Load<Sprite>("Images/Protester/Child/Childhead/head/head1") as Sprite,
             };
-
+            ChildHeadSprite.sortingLayerName = sortingLayerName;
             // Child Face
             ChildFaceSprite.sprite = Resources.Load<Sprite>("Images/Protester/Child/Childhead/face") as Sprite;
+            ChildFaceSprite.sortingLayerName = sortingLayerName;
         }
         else
         {
