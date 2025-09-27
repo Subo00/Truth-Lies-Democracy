@@ -47,7 +47,7 @@ public class PhotoCapture : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         //TODO change this rect to captureo only the part of the screen not the full screen
-        Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
+        Rect regionToRead = new(0, 0, Screen.width, Screen.height);
         CastRayGrid();
         screenCapture.ReadPixels(regionToRead, 0, 0, false);
         screenCapture.Apply();
@@ -79,7 +79,7 @@ public class PhotoCapture : MonoBehaviour
                 float u = (float)x / (raysX - 1);
                 float v = (float)y / (raysY - 1);
 
-                Vector3 screenPoint = new Vector3(u * Screen.width, v * Screen.height, 0f);
+                Vector3 screenPoint = new(u * Screen.width, v * Screen.height, 0f);
 
                 Ray ray = cam.ScreenPointToRay(screenPoint);
 
