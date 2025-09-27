@@ -90,7 +90,7 @@ public class PhotoCapture : MonoBehaviour
                 if(hit.collider != null)
                 {
                     Debug.Log($"Ray ({x},{y}) hit: {hit.collider.gameObject.name}");
-                    hit.collider.gameObject.SetActive(false);
+                    //hit.collider.gameObject.SetActive(false);
                 }
             }
         }
