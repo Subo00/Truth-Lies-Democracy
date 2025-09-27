@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,12 +51,8 @@ public class PhotoCapture : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        int xPos = (int)Input.mousePosition.x - (int)cameraWidth / 2;
-        int yPos = (int)Input.mousePosition.y - (int)cameraHeight / 2;
-
         //TODO change this rect to captureo only the part of the screen not the full screen
-        //Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
-        Rect regionToRead = new Rect(xPos, yPos, cameraWidth, cameraHeight);
+        Rect regionToRead = new(0, 0, Screen.width, Screen.height);
         CastRayGrid();
 
 
@@ -85,10 +80,8 @@ public class PhotoCapture : MonoBehaviour
 
     private void CastRayGrid()
     {
-        int xPos = (int)Input.mousePosition.x - (int)cameraWidth / 2;
-        int yPos = (int)Input.mousePosition.y - (int)cameraHeight / 2;
-
-        for (int x = 0; x < raysX; x++)
+        int total = raysX * raysY;
+        for(int x = 0; x < raysX; x++)
         {
             for (int y = 0; y < raysY; y++)
             {
@@ -101,9 +94,9 @@ public class PhotoCapture : MonoBehaviour
 
                 Physics.Raycast(cam.transform.position, ray.direction, out RaycastHit hit, maxDistance);
 
-                Debug.DrawRay(cam.transform.position, ray.direction * maxDistance, Color.green);
+                Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.green);
 
-                if (hit.collider != null)
+                if(hit.collider != null)
                 {
                     //Debug.Log($"Ray ({x},{y}) hit: {hit.collider.gameObject.name}");
 

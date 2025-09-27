@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2981160247
+    locked: 0
+  - name: Buildings&Structures
+    uniqueID: 2976404241
+    locked: 0
+  - name: PointsOfInterest
+    uniqueID: 2648648453
+    locked: 0

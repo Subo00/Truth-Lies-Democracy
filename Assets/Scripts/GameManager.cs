@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
-public struct Statment
+public struct Statement
 {
     public string text;
     public PointType pointType;
     public float neededValue;
 }
-
-
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Statment statment;
-    public bool isUIActive = false;
+    public Statement statement;
 
 
     private void Awake()
@@ -30,17 +25,25 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
-    
 
-    public void CheckValue(PointType type, float value)
+    private void Start()
     {
-        if(statment.pointType == type && statment.neededValue < value)
+        Debug.Log(statement.text);
+    }
+
+    public void CheckValue(PointType pointType, float neededValue)
+    {
+        if(statement.pointType == pointType && statement.neededValue < neededValue)
         {
             Debug.Log("WIN");
-        }else{
+        }
+        else
+        {
             Debug.Log("Try again!");
         }
     }
+    
+
+    
 }
