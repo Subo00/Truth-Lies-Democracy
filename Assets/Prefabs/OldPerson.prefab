@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6157938114228032337}
-  - component: {fileID: 4699772194520657694}
+  - component: {fileID: -3374467290576057087}
   m_Layer: 0
-  m_Name: Protester
+  m_Name: OldPerson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4699772194520657694
+--- !u!114 &-3374467290576057087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8052817800742420177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bcc12b00ce7d034fba8ef9453fd252c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e3eee3654378c6418a1d0a8dd0e1304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BodyType: 0
-  ClothingColor: {r: 0, g: 0, b: 0, a: 0}
+  BodyColor: {r: 0, g: 0, b: 0, a: 0}
   Eyes: 0
   HairType: 0
-  HeadColor: 0
+  HairColor: {r: 0, g: 0, b: 0, a: 0}
+  Head: 0
   Mouth: 0
-  Arm: 0
-  ChildHairType: 0
-  ChildHeadColor: 0
+  Attachment: 0
+  BodySprite: {fileID: 0}
+  EyesSprite: {fileID: 0}
+  HairSprite: {fileID: 0}
+  HeadSprite: {fileID: 0}
+  MouthSprite: {fileID: 0}
+  ArmSprite: {fileID: 0}
+  AttachmentSprite: {fileID: 0}
