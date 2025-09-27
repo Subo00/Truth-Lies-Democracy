@@ -10,13 +10,16 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private Image photoDisplayArea;
     [SerializeField] private GameObject photoFrame;
     [SerializeField] private Camera cam;
+    [SerializeField] private int raysX = 5;
+    [SerializeField] private int raysY = 4;
+    [SerializeField] private float maxDistance = 10f;
+
+
     private Texture2D screenCapture;
     private bool viewPhoto; //remove this (lol)
 
     
-    private int raysX = 5;
-    private int raysY = 4;
-    private float maxDistance = 100f;
+    
 
     private void Start()
     {
@@ -25,8 +28,8 @@ public class PhotoCapture : MonoBehaviour
 
     private void Update()
     {
-        
-        if(Input.GetMouseButtonDown(0))
+        CastRayGrid();
+        if (Input.GetMouseButtonDown(0))
         {
             if (viewPhoto)
             {
@@ -69,9 +72,17 @@ public class PhotoCapture : MonoBehaviour
         photoFrame.SetActive(false);
     }
 
+    private void CastSingleRay()
+    {
+        Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit);
+        if (hit.collider != null)
+        {
+            Debug.Log($" hit: {hit.collider.gameObject.name}");
+            //hit.collider.gameObject.SetActive(false);
+        }
+    }
     private void CastRayGrid()
     {
-        int total = raysX * raysY;
         for(int x = 0; x < raysX; x++)
         {
             for(int y = 0; y < raysY; y++)
@@ -83,9 +94,9 @@ public class PhotoCapture : MonoBehaviour
 
                 Ray ray = cam.ScreenPointToRay(screenPoint);
 
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, maxDistance);
+                Physics.Raycast(cam.transform.position, ray.direction,  out RaycastHit hit, maxDistance);
 
-                Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.green);
+                Debug.DrawRay(cam.transform.position, ray.direction * maxDistance, Color.green);
 
                 if(hit.collider != null)
                 {
