@@ -26,7 +26,8 @@ public class PhotoCapture : MonoBehaviour
 
     private void Start()
     {
-        screenCapture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        //screenCapture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        screenCapture = new Texture2D((int)cameraWidth, (int)cameraHeight, TextureFormat.RGB24, false);
     }
 
     private void Update()
@@ -52,9 +53,15 @@ public class PhotoCapture : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
+        int xPos = (int)Input.mousePosition.x - (int)cameraWidth / 2;
+        int yPos = (int)Input.mousePosition.y - (int)cameraHeight / 2;
+
         //TODO change this rect to captureo only the part of the screen not the full screen
-        Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
+        //Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
+        Rect regionToRead = new Rect(xPos, yPos, cameraWidth, cameraHeight);
         CastRayGrid();
+
+        
         screenCapture.ReadPixels(regionToRead, 0, 0, false);
         screenCapture.Apply();
 
@@ -97,14 +104,17 @@ public class PhotoCapture : MonoBehaviour
     }
     private void CastRayGrid()
     {
-        for(int x = 0; x < raysX; x++)
+        int xPos = (int)Input.mousePosition.x - (int)cameraWidth / 2;
+        int yPos = (int)Input.mousePosition.y - (int)cameraHeight / 2;
+
+        for (int x = 0; x < raysX; x++)
         {
             for(int y = 0; y < raysY; y++)
             {
                 float u = (float)x / (raysX - 1);
                 float v = (float)y / (raysY - 1);
 
-                Vector3 screenPoint = new Vector3(u * Screen.width, v * Screen.height, 0f);
+                Vector3 screenPoint = new Vector3(u * cameraWidth + (float)xPos , v * cameraHeight  + (float)yPos, 0f);
 
                 Ray ray = cam.ScreenPointToRay(screenPoint);
 
