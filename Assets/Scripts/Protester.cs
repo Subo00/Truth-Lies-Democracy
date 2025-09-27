@@ -6,7 +6,8 @@ using UnityEngine;
 public enum BodyType
 {
     ROUND,
-    SLIM
+    SLIM,
+    OLD,
 }
 
 public enum ClothingColor
@@ -57,6 +58,8 @@ public enum Arm
     EMPTY,
     SIGN,
     CHILD,
+    CANE,
+    WALKER,
 }
 
 public enum ChildHair
@@ -102,12 +105,5 @@ public class Protester : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void SetHead(Eyes eyes, Hair hair, Mouth mouth)
-    {
-        Eyes = eyes;
-        Hair = hair;
-        Mouth = mouth;
     }
 }
