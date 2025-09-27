@@ -1,11 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 
-public enum PointType { Protester, Fire, Child, Adult, Police, Nature, Size}
+public enum PointType { None, Protester, Fire, Child, Adult, Police, Nature}
 public class PointCounter : MonoBehaviour
 {
+    public static PointCounter Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private Dictionary<PointType, float> points = new Dictionary<PointType, float>();
 
     public void AddPoint(PointType type)
@@ -27,10 +41,18 @@ public class PointCounter : MonoBehaviour
     }
     public void CheckWin()
     {
+        float maxValue = 0f;
+        PointType maxType = PointType.None;
+
         foreach(var point in  points)
         {
-            GameManager.Instance.CheckValue(point.Key, point.Value);
+            if( maxValue < point.Value )
+            {
+                maxType = point.Key;
+                maxValue = point.Value;
+            }
         }
+        GameManager.Instance.CheckValue(maxType, maxValue);
     }
     public void PrintPoints()
     {

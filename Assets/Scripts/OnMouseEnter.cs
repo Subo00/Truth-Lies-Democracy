@@ -17,4 +17,9 @@ public class OnMouseEnter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         mover.MoveClear(direction);
     }
+
+    private void OnDisable()
+    {
+        mover.MoveClear(direction);
+    }
 }

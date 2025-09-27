@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Statement statement;
-
+    public bool isUIActive = false;
 
     private void Awake()
     {
@@ -43,5 +43,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Try again!");
         }
     }
+    
+
     
 }

@@ -5,6 +5,7 @@ public enum Direction { Up, Down, Left, Right }
 
 public class Mover : MonoBehaviour
 {
+    
     [SerializeField] private float farRight;
     [SerializeField] private float farLeft;
     [SerializeField] private float farUp;
@@ -16,11 +17,16 @@ public class Mover : MonoBehaviour
     private bool movingRight = false;
     private bool movingUp = false;
     private bool movingDown = false;
+    private GameManager gameManager;
 
-
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.isUIActive) return;
         currentX = transform.position.x;
         currentY = transform.position.y;
         if(movingRight && currentX < farRight) { transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime; }
