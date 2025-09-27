@@ -32,7 +32,7 @@ public class PhotoCapture : MonoBehaviour
 
     private void Update()
     {
-        //CastRayGrid();
+        CastRayGrid();
         if (Input.GetMouseButtonDown(0))
         {
             if (viewPhoto)

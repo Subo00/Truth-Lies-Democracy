@@ -17,6 +17,7 @@ public class Mover : MonoBehaviour
     private bool movingUp = false;
     private bool movingDown = false;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -65,4 +66,5 @@ public class Mover : MonoBehaviour
                 break;
         }
     }
+
 }
