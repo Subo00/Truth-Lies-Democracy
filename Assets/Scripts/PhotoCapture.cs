@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private int raysX = 5;
     [SerializeField] private int raysY = 4;
     [SerializeField] private float maxDistance = 10f;
+    [SerializeField] private float cameraWidth = 360f;
+    [SerializeField] private float cameraHeight = 180f;
 
 
     private Texture2D screenCapture;
@@ -28,7 +31,7 @@ public class PhotoCapture : MonoBehaviour
 
     private void Update()
     {
-        CastRayGrid();
+        //CastRayGrid();
         if (Input.GetMouseButtonDown(0))
         {
             if (viewPhoto)
@@ -74,12 +77,23 @@ public class PhotoCapture : MonoBehaviour
 
     private void CastSingleRay()
     {
-        Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit);
+        RaycastHit2D[] hits;
+        //first get the world coordinates of the current mouse position, taking into account the distance of the camera that is assumed to be negative Z
+        Vector3 w = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1 * Camera.main.transform.position.z));
+        //Next we do a 2D raycast with with null direction and 0 length, this will collide as long as the world point above is inside one of your colliders
+        hits = Physics2D.RaycastAll(new Vector2(w.x, w.y), (new Vector2(0f, 0f)).normalized * 0);
+
+        foreach(var hit in hits)
+        {
+            Debug.Log("I hit " + hit.collider.gameObject.name);
+        }
+
+        /*Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit);
         if (hit.collider != null)
         {
             Debug.Log($" hit: {hit.collider.gameObject.name}");
             //hit.collider.gameObject.SetActive(false);
-        }
+        }*/
     }
     private void CastRayGrid()
     {
@@ -98,7 +112,7 @@ public class PhotoCapture : MonoBehaviour
 
                 Debug.DrawRay(cam.transform.position, ray.direction * maxDistance, Color.green);
 
-                if(hit.collider != null)
+                if (hit.collider != null)
                 {
                     Debug.Log($"Ray ({x},{y}) hit: {hit.collider.gameObject.name}");
                     //hit.collider.gameObject.SetActive(false);
