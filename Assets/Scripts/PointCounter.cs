@@ -58,7 +58,7 @@ public class PointCounter : MonoBehaviour
     {
         foreach(var point in points)
         {
-            Debug.Log("type shit: " + point.Key + " value: " +point.Value);
+            //Debug.Log("type shit: " + point.Key + " value: " +point.Value);
         }
     }
 }
