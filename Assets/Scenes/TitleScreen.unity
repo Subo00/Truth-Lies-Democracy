@@ -1016,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 275328568880118522, guid: 88a8c9d8c89e63849b19ff5812d44574, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3026387719909230137, guid: 88a8c9d8c89e63849b19ff5812d44574, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1219,27 +1223,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4293964542988272734, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4293964542988272734, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4293964542988272734, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6378987455601130130, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
       propertyPath: m_Name
       value: MusicSlider
       objectReference: {fileID: 0}
-    - target: {fileID: 8373118783173900329, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 6378987455601130130, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8373118783173900329, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373118783173900329, guid: bd3d6dc00e0bc674bad7cbe3e4428980, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
