@@ -3,19 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public struct Goal
+{
+    public PointType pointType;
+    public float neededValue;
+}
+
 [System.Serializable]
 public struct Statement
 {
     public string text;
-    public PointType pointType;
-    public float neededValue;
+    public Goal[] goals;
 }
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Statement[] statement;
     public bool isUIActive = false;
 
+    public Statement currentStatement;
     private void Awake()
     {
         if (Instance == null)
@@ -33,9 +43,20 @@ public class GameManager : MonoBehaviour
         Debug.Log(statement[0].text);
     }
 
-    public void CheckValue(PointType pointType, float neededValue)
+    public void CheckValue(Dictionary<PointType, float> points)
     {
-        if (statement[0].pointType == pointType && statement[0].neededValue < neededValue)
+        bool isWin = true;
+        foreach(Goal goal in currentStatement.goals)
+        {
+            if (points.TryGetValue(goal.pointType, out float value) == false  || goal.neededValue > value)
+            {
+                isWin = false; 
+                break;
+            }
+        }
+
+
+        if (isWin)
         {
             Debug.Log("WIN");
         }
