@@ -74,6 +74,8 @@ public class PhotoCapture : MonoBehaviour
 
         photoFrameGO.SetActive(true);
         MoverGO.SetActive(false);
+
+        GetComponent<AudioSource>().Play();
     }
 
     private void RemovePhoto()

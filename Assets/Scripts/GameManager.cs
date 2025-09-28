@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             if (points.TryGetValue(goal.pointType, out float value) == false  || goal.neededValue > value)
             {
-                isWin = false; 
+                isWin = false;
                 break;
             }
         }
@@ -60,10 +60,12 @@ public class GameManager : MonoBehaviour
         if (isWin)
         {
             Debug.Log("WIN");
+            GetComponents<AudioSource>()[0].Play();
         }
         else
         {
             Debug.Log("Try again!");
+            GetComponents<AudioSource>()[1].Play();
         }
     }
     
