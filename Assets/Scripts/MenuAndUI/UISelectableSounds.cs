@@ -12,10 +12,6 @@ public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHa
 
     private void Awake()
     {
-        if (UIhoverSound == null)
-        {
-            Debug.LogWarning("Audio source on UI selectable is null!");
-        }
         selectable = GetComponent<Selectable>();
         if (selectable != null && selectable.GetType()==typeof(Button))
         {
@@ -34,8 +30,11 @@ public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHa
             if (selectable.interactable)
             {
 
-                UIhoverSound.Play();
-                
+                if (UIhoverSound != null)
+                {
+                    UIhoverSound.Play();
+                }
+
             }
             else
             {
@@ -44,7 +43,10 @@ public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHa
         }
         else
         {
-            UIhoverSound.Play();
+            if (UIhoverSound != null)
+            {
+                UIhoverSound.Play();
+            }
         }
     }
 
@@ -72,7 +74,11 @@ public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHa
         {
             if (selectable.interactable)
             {
-                UIhoverSound.Play();
+                if (UIhoverSound != null)
+                {
+                    UIhoverSound.Play();
+                }
+
             }
             else
             {
@@ -81,7 +87,10 @@ public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHa
         }
         else
         {
-            UIhoverSound.Play();
+            if (UIhoverSound != null)
+            {
+                UIhoverSound.Play();
+            }
         }
     }
 }
