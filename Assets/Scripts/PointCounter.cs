@@ -41,18 +41,7 @@ public class PointCounter : MonoBehaviour
     }
     public void CheckWin()
     {
-        float maxValue = 0f;
-        PointType maxType = PointType.None;
-
-        foreach(var point in  points)
-        {
-            if( maxValue < point.Value )
-            {
-                maxType = point.Key;
-                maxValue = point.Value;
-            }
-        }
-        GameManager.Instance.CheckValue(maxType, maxValue);
+        GameManager.Instance.CheckValue(points);
     }
     public void PrintPoints()
     {

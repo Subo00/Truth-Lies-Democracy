@@ -18,6 +18,8 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private float cameraWidth = 360f;
     [SerializeField] private float cameraHeight = 180f;
 
+    [SerializeField] private GameObject colliderInScene;
+
     private GameManager gameManager;
     private PointCounter pointCounter;
     private Texture2D screenCapture;
@@ -57,8 +59,7 @@ public class PhotoCapture : MonoBehaviour
         //TODO change this rect to captureo only the part of the screen not the full screen
         //Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
         Rect regionToRead = new Rect(xPos, yPos, cameraWidth, cameraHeight);
-        CastRayGrid();
-
+        CameraCollider.Instance.CheckCollision();
 
         screenCapture.ReadPixels(regionToRead, 0, 0, false);
         screenCapture.Apply();

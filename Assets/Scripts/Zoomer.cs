@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class Zoomer : MonoBehaviour
 {
-    [SerializeField] private float maxFOW = 100f;
-    [SerializeField] private float minFOW = 30f;
-    [SerializeField] private float zoomSpeed = 5f;
+    private CameraCollider cameraCollider;
+    
+    
+    
+    private float maxSize = 5f;
+    private float minSize = 3f;
+    private float zoomSpeed = 5f;
+
     private Camera cam;
     
     void Start()
     {
         cam = GetComponent<Camera>();
+        cam.orthographicSize = maxSize;
+        cameraCollider = CameraCollider.Instance;
+        cameraCollider.ScaleColliderCapture();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float zoom = cam.fieldOfView;
+        float zoom = cam.orthographicSize;
         if(Input.mouseScrollDelta.y > 0)
         {
             zoom -= zoomSpeed * Time.deltaTime;
@@ -27,8 +35,13 @@ public class Zoomer : MonoBehaviour
             zoom += zoomSpeed * Time.deltaTime;
         }
 
-        zoom = Mathf.Clamp(zoom, minFOW, maxFOW);
+        zoom = Mathf.Clamp(zoom, minSize, maxSize);
 
-        cam.fieldOfView = zoom;
+        cam.orthographicSize = zoom;
+        float t = Mathf.InverseLerp(minSize, maxSize, zoom);
+
+        cameraCollider.ScaleByLerp(t);
     }
+
+
 }
