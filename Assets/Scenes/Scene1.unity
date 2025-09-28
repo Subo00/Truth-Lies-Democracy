@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 428058090340841072, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
       propertyPath: maxSize
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 428058090340841072, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
       propertyPath: zoomSpeed
@@ -184,15 +184,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5464400781041238430, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
       propertyPath: farUp
-      value: 2
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 5464400781041238430, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
       propertyPath: farDown
-      value: -0.7
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464400781041238430, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
+      propertyPath: farLeft
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464400781041238430, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
+      propertyPath: farRight
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5669871063113738658, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
       propertyPath: m_Name
       value: CameraHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6675251512426263641, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8552633338888794534, guid: 0925ce9038f0bc147a75f176960ff11b, type: 3}
       propertyPath: m_IsActive
