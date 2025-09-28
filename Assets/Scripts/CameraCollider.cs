@@ -7,8 +7,8 @@ public class CameraCollider : MonoBehaviour
     public static CameraCollider Instance;
 
     private Collider2D myCollider;
-    private float maxColliderScale = 2f;
-    private float minColliderScale = 1f;
+    private float maxColliderScale = 0.7f;
+    private float minColliderScale = 0.5f;
 
     void Start()
     {
@@ -35,8 +35,9 @@ public class CameraCollider : MonoBehaviour
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos); 
         transform.position = worldPos; 
     }
-    public void ScaleColliderCapture(float scale = 2f)
+    public void ScaleColliderCapture(float scale = 0f)
     {
+        if (scale == 0f) scale = maxColliderScale;
         transform.localScale = new Vector3(scale, scale, scale);
     }
 

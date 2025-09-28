@@ -12,13 +12,12 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private GameObject MoverGO;
     [SerializeField] private Camera cam;
 
-    [SerializeField] private int raysX = 5;
-    [SerializeField] private int raysY = 4;
+   // [SerializeField] private int raysX = 5;
+    //[SerializeField] private int raysY = 4;
     [SerializeField] private float maxDistance = 10f;
     [SerializeField] private float cameraWidth = 360f;
     [SerializeField] private float cameraHeight = 180f;
 
-    [SerializeField] private GameObject colliderInScene;
 
     private GameManager gameManager;
     private PointCounter pointCounter;
@@ -83,7 +82,7 @@ public class PhotoCapture : MonoBehaviour
         MoverGO.SetActive(true);
     }
 
-    private void CastRayGrid()
+   /* private void CastRayGrid()
     {
         int xPos = (int)Input.mousePosition.x - (int)cameraWidth / 2;
         int yPos = (int)Input.mousePosition.y - (int)cameraHeight / 2;
@@ -120,7 +119,7 @@ public class PhotoCapture : MonoBehaviour
         }
         pointCounter.PrintPoints();
     }
-
+   */
     public void SendPicture()
     {
         pointCounter.CheckWin();
