@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e67c0f01e29824e8aa35133fcceda7, type: 3}
+  m_Name: 06
+  m_EditorClassIdentifier: 
+  MediaOutlet: The Daily Roar
+  Headline: 'Health Alert: Toxic Smoke from Barricades Threatens Residents'' Health'
+  Description: A single burning trash can with a smoky fire inside.
+  Explenation: The angle is one of 'public health risk.' It's a more subtle manipulation
+    that pretends to care for citizens' well-being to turn them against the protest's
+    'toxicity.'
+  Reward: 450
+  Ethics_On_Accept: -50
+  Ethics_On_Reject: -10
+  goals:
+  - pointType: 2
+    neededValue: 1
