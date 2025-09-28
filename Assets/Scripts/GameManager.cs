@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Assignment[] allAssignments;
     private Assignment currentAssigment;
-    private List<Assignment> listOfAssignments;
+    private List<Assignment> listOfAssignments = new List<Assignment>();
 
     [SerializeField] private GameObject AssigmentPicker;
     [SerializeField] private AssigmentChoice[] assigmentChoices;
@@ -85,9 +85,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddAssigments(Assignment assingment, bool add = true)
+    public void AddAssigments(Assignment assingment)
     {
-        if (add) { listOfAssignments.Add(assingment); }
+        listOfAssignments.Add(assingment); 
 
         numOffAssigments--;
 
@@ -98,4 +98,14 @@ public class GameManager : MonoBehaviour
         }
     }
     
+
+    public void RemoveAssigment()
+    {
+        numOffAssigments--;
+        if (numOffAssigments == 0)
+        {
+            AssigmentPicker.SetActive(false);
+            isUIActive = false;
+        }
+    }
 }
