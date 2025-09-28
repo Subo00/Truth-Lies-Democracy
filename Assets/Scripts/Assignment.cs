@@ -18,7 +18,7 @@ public class Assignment : ScriptableObject
     public string Headline;
     public string Description;
     public string Explenation;
-    public float Reward; // € or $
+    public float Reward; // ï¿½ or $
     public int Ethics_On_Accept;
     public int Ethics_On_Reject;
     // public float TimeRemaining;
