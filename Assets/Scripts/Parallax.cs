@@ -5,11 +5,12 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     private float startPos;
-    public GameObject cam;
+    private GameObject cam;
     public float parallaxEffect;
 
     void Start()
     {
+        cam = Camera.main.gameObject;
         startPos = transform.position.x;
     }
 
