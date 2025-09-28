@@ -22,10 +22,10 @@ public struct Statement
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Statement[] statement;
+    public Statement[] statements;
     public bool isUIActive = false;
 
-    public Statement currentStatement;
+    private Statement currentStatement;
     private void Awake()
     {
         if (Instance == null)
@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(statement[0].text);
+        currentStatement = statements[0];
+        Debug.Log(currentStatement.text);
     }
 
     public void CheckValue(Dictionary<PointType, float> points)
