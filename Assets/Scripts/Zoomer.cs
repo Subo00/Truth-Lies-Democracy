@@ -6,8 +6,6 @@ public class Zoomer : MonoBehaviour
 {
     private CameraCollider cameraCollider;
     
-    
-    
     private float maxSize = 5f;
     private float minSize = 3f;
     private float zoomSpeed = 5f;

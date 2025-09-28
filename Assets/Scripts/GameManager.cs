@@ -4,28 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable]
-public struct Goal
-{
-    public PointType pointType;
-    public float neededValue;
-}
 
-[System.Serializable]
-public struct Statement
-{
-    public string text;
-    public Goal[] goals;
-}
 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Statement[] statements;
-    public bool isUIActive = false;
+    [HideInInspector] public bool isUIActive = false;
 
-    private Statement currentStatement;
+    public Assignment[] allAssignments;
+    private Assignment currentAssigment;
+    private List<Assignment> listOfAssignments;
+
+    [SerializeField] private GameObject AssigmentPicker;
+    [SerializeField] private AssigmentChoice[] assigmentChoices;
+
+    private int numOffAssigments = 3;
+
+    private int maxEthics = 100;
+    private int currentEthics;
+    public int neededGold = 1500;
+    public int currentGold = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -40,35 +40,62 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currentStatement = statements[0];
-        Debug.Log(currentStatement.text);
+        currentAssigment = allAssignments[0];
+        //Debug.Log(currentAssigment.Headline);
+        currentEthics = maxEthics / 2;
+
+        isUIActive = true;
+        AssigmentPicker.SetActive(true);
+        for(int i = 0; i < 3; i++)
+        {
+            assigmentChoices[i].SetAssigment(allAssignments[i]);
+        }
     }
 
     public void CheckValue(Dictionary<PointType, float> points)
     {
-        bool isWin = true;
-        foreach(Goal goal in currentStatement.goals)
+        bool isCompleted = true;
+        foreach(Goal goal in currentAssigment.goals)
         {
             if (points.TryGetValue(goal.pointType, out float value) == false  || goal.neededValue > value)
             {
-                isWin = false;
+                isCompleted = false; 
                 break;
             }
         }
 
 
-        if (isWin)
+        if (isCompleted)
         {
             Debug.Log("WIN");
-            GetComponents<AudioSource>()[0].Play();
         }
         else
         {
             Debug.Log("Try again!");
-            GetComponents<AudioSource>()[1].Play();
         }
     }
     
+    public void ChangeEthics(int value)
+    {
+        currentEthics += value;
+        currentEthics = Mathf.Clamp(currentEthics, 0, maxEthics);
+        if(currentEthics == 0)
+        {
+            Debug.Log("YOU LOSE");
+        }
+    }
 
+    public void AddAssigments(Assignment assingment, bool add = true)
+    {
+        if (add) { listOfAssignments.Add(assingment); }
+
+        numOffAssigments--;
+
+        if(numOffAssigments == 0)
+        {
+            AssigmentPicker.SetActive(false);
+            isUIActive = false;
+        }
+    }
     
 }

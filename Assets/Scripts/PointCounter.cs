@@ -4,7 +4,7 @@ using System.Drawing;
 using UnityEngine;
 
 
-public enum PointType { None, Protester, Fire, Child, Adult, Police, Nature}
+public enum PointType { None, Protester, Fire, Child, Adult, Police, Nature, Sign, BrokenGlass, LocalShop, Grafiti}
 public class PointCounter : MonoBehaviour
 {
     public static PointCounter Instance;
