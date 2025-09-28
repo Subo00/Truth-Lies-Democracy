@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class Assignment : MonoBehaviour
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Assignment")]
+public class Assignment : ScriptableObject
 {
     public int Id;
     public string MediaOutlet;
