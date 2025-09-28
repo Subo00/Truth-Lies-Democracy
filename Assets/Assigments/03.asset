@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e67c0f01e29824e8aa35133fcceda7, type: 3}
+  m_Name: 03
+  m_EditorClassIdentifier: 
+  MediaOutlet: The Daily Roar
+  Headline: 'Police Overwhelmed: Law and Order Crumbles in the City Center'
+  Description: The broken glass of a storefront window, with no one around.
+  Explenation: The image is used to sell a narrative of 'civic insecurity' and suggest
+    that the police have lost control, making the reader feel unsafe.
+  Reward: 500
+  Ethics_On_Accept: -65
+  Ethics_On_Reject: -10
+  goals:
+  - pointType: 8
+    neededValue: 1
