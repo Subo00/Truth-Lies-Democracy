@@ -14,6 +14,7 @@ public struct Goal
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Assignment")]
 public class Assignment : ScriptableObject
 {
+    [SerializeField]
     public int Id;
     public string MediaOutlet;
     public string Headline;
