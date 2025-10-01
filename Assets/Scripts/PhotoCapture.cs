@@ -38,7 +38,7 @@ public class PhotoCapture : MonoBehaviour
     private void Update()
     {
         if (gameManager.isUIActive) {
-            Debug.Log("UI IS ON!");
+            
             return; }
         //CastRayGrid();
 
