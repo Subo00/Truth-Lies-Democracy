@@ -46,10 +46,10 @@ public class GameManager : MonoBehaviour
 
         isUIActive = true;
         AssigmentPicker.SetActive(true);
-        for(int i = 0; i < 3; i++)
+        /*for(int i = 0; i < 3; i++)
         {
             assigmentChoices[i].SetAssigment(allAssignments[i]);
-        }
+        }*/
     }
 
     public void CheckValue(Dictionary<PointType, float> points)

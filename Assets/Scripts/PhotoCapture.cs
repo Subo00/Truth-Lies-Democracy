@@ -14,7 +14,6 @@ public class PhotoCapture : MonoBehaviour
 
    // [SerializeField] private int raysX = 5;
     //[SerializeField] private int raysY = 4;
-    [SerializeField] private float maxDistance = 10f;
     [SerializeField] private float cameraWidth = 360f;
     [SerializeField] private float cameraHeight = 180f;
 
