@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(currentAssigment.Headline);
         currentEthics = maxEthics / 2;
 
-        isUIActive = true;
+        //isUIActive = true;
         AssigmentPicker.SetActive(true);
         /*for(int i = 0; i < 3; i++)
         {
