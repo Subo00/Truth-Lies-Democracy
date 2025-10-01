@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour
 
     public Assignment[] allAssignments;
     private Assignment currentAssigment;
-    private List<Assignment> listOfAssignments = new List<Assignment>();
+    private Queue<Assignment> queuOfAssignments = new Queue<Assignment>();
 
     [SerializeField] private GameObject AssigmentPicker;
     [SerializeField] private AssigmentChoice[] assigmentChoices;
 
     private int numOffAssigments = 3;
+    private Queue<Assignment> queueOfCompleted = new Queue<Assignment>();
+    private Queue<Assignment> queueOfFaild = new Queue<Assignment>();
 
     private int maxEthics = 100;
     private int currentEthics;
@@ -40,18 +42,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currentAssigment = allAssignments[0];
+        //currentAssigment = allAssignments[0];
         //Debug.Log(currentAssigment.Headline);
         currentEthics = maxEthics / 2;
 
-        //isUIActive = true;
-        AssigmentPicker.SetActive(true);
+        ShowAssigments();
+        
         /*for(int i = 0; i < 3; i++)
         {
             assigmentChoices[i].SetAssigment(allAssignments[i]);
         }*/
     }
-
+    private void Update()
+    {
+        if (AssigmentPicker.active) //because fuck you that's why 
+        {
+            isUIActive = true;
+        }
+    }
     public void CheckValue(Dictionary<PointType, float> points)
     {
         bool isCompleted = true;
@@ -67,11 +75,24 @@ public class GameManager : MonoBehaviour
 
         if (isCompleted)
         {
-            Debug.Log("WIN");
+            Debug.Log("You got paid " + currentAssigment.Reward + " gold");
+            queueOfCompleted.Enqueue(currentAssigment);
+            //add gold and remove assigment
         }
         else
         {
-            Debug.Log("Try again!");
+            Debug.Log("You get nothing, good day sir!");
+            queueOfFaild.Enqueue(currentAssigment); 
+            //remove assigment
+        }
+
+        if(queuOfAssignments.Count == 0)
+        {
+            ShowAssigments();
+        }
+        else
+        {
+            currentAssigment = queuOfAssignments.Dequeue();
         }
     }
     
@@ -87,25 +108,42 @@ public class GameManager : MonoBehaviour
 
     public void AddAssigments(Assignment assingment)
     {
-        listOfAssignments.Add(assingment); 
+        queuOfAssignments.Enqueue(assingment); 
 
         numOffAssigments--;
 
         if(numOffAssigments == 0)
         {
-            AssigmentPicker.SetActive(false);
-            isUIActive = false;
+            StartGame();
         }
+    }
+
+    private void StartGame()
+    {
+        AssigmentPicker.SetActive(false);
+        isUIActive = false;
+        numOffAssigments = 3;
+        currentAssigment = queuOfAssignments.Dequeue();
+    }
+
+    private void ShowAssigments()
+    {
+        AssigmentPicker.SetActive(true);
+        isUIActive = true;
+
+        isUIActive = true;
+    }
+
+    public Assignment GetCurrentAssignment()
+    {
+        return currentAssigment;
     }
     
-
-    public void RemoveAssigment()
+    public int CheckAssignments(Assignment assignment)
     {
-        numOffAssigments--;
-        if (numOffAssigments == 0)
-        {
-            AssigmentPicker.SetActive(false);
-            isUIActive = false;
-        }
+        if (queueOfCompleted.Contains(assignment)) return 0;
+        if (queueOfFaild.Contains(assignment)) return 1;
+        return 2;
     }
+
 }

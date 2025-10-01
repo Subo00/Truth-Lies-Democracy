@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,8 @@ public class PhotoCapture : MonoBehaviour
     [SerializeField] private GameObject photoFrameGO;
     [SerializeField] private GameObject MoverGO;
     [SerializeField] private Camera cam;
-
-   // [SerializeField] private int raysX = 5;
+    [SerializeField] private TMP_Text headline;
+    // [SerializeField] private int raysX = 5;
     //[SerializeField] private int raysY = 4;
     [SerializeField] private float cameraWidth = 360f;
     [SerializeField] private float cameraHeight = 180f;
@@ -36,10 +37,12 @@ public class PhotoCapture : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isUIActive) { return; }
+        if (gameManager.isUIActive) {
+            Debug.Log("UI IS ON!");
+            return; }
         //CastRayGrid();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !gameManager.isUIActive)
         {
             StartCoroutine(CapturePhoto());
         }
@@ -72,6 +75,7 @@ public class PhotoCapture : MonoBehaviour
 
         photoFrameGO.SetActive(true);
         MoverGO.SetActive(false);
+        headline.text = gameManager.GetCurrentAssignment().Headline;
 
         GetComponent<AudioSource>().Play();
     }
