@@ -44,8 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ead00fe21194bc4395c06ca98e95b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statement:
-    text: '"Find a protestor"'
-    pointType: 0
-    neededValue: 5
   isUIActive: 0
+  allAssignments:
+  - {fileID: 11400000, guid: fa26d1aed81c6114eb2924394d426606, type: 2}
+  - {fileID: 11400000, guid: 2c571396661c47e43808c65ebfc12066, type: 2}
+  - {fileID: 11400000, guid: 8e2693c0af5498e48b5215e5d9e4b05c, type: 2}
+  - {fileID: 11400000, guid: 737e1d69f5310d942bf74e4194ec7177, type: 2}
+  - {fileID: 11400000, guid: 57c7caf24f592db49bb9bbe7145251b3, type: 2}
+  - {fileID: 11400000, guid: f5a458bcc852af640898cf74a5e26c78, type: 2}
+  AssigmentPicker: {fileID: 0}
+  assigmentChoices: []
+  neededGold: 1500
+  currentGold: 0

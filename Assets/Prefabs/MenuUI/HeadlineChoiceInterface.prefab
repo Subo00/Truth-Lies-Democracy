@@ -232,6 +232,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1568340332229549581}
     m_Modifications:
+    - target: {fileID: 1198452731374898272, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
+      propertyPath: assigment
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e2693c0af5498e48b5215e5d9e4b05c, type: 2}
     - target: {fileID: 1390916847502259931, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -334,6 +338,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1568340332229549581}
     m_Modifications:
+    - target: {fileID: 1198452731374898272, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
+      propertyPath: assigment
+      value: 
+      objectReference: {fileID: 11400000, guid: fa26d1aed81c6114eb2924394d426606, type: 2}
     - target: {fileID: 1390916847502259931, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -550,6 +558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1568340332229549581}
     m_Modifications:
+    - target: {fileID: 1198452731374898272, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
+      propertyPath: assigment
+      value: 
+      objectReference: {fileID: 11400000, guid: f5a458bcc852af640898cf74a5e26c78, type: 2}
     - target: {fileID: 1390916847502259931, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -652,6 +664,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1568340332229549581}
     m_Modifications:
+    - target: {fileID: 1198452731374898272, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
+      propertyPath: assigment
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c571396661c47e43808c65ebfc12066, type: 2}
     - target: {fileID: 1390916847502259931, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -754,6 +770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1568340332229549581}
     m_Modifications:
+    - target: {fileID: 1198452731374898272, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
+      propertyPath: assigment
+      value: 
+      objectReference: {fileID: 11400000, guid: 57c7caf24f592db49bb9bbe7145251b3, type: 2}
     - target: {fileID: 1390916847502259931, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -856,6 +876,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1568340332229549581}
     m_Modifications:
+    - target: {fileID: 1198452731374898272, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
+      propertyPath: assigment
+      value: 
+      objectReference: {fileID: 11400000, guid: 737e1d69f5310d942bf74e4194ec7177, type: 2}
     - target: {fileID: 1390916847502259931, guid: 96b6317f66a2c5a4ca2e9b518300475e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

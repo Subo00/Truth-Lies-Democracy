@@ -9,10 +9,14 @@ public class CameraCollider : MonoBehaviour
     private Collider2D myCollider;
     private float maxColliderScale = 0.7f;
     private float minColliderScale = 0.5f;
+    private GameManager gameManager;
+    private SpriteRenderer sr;
 
     void Start()
     {
         myCollider = GetComponent<Collider2D>();
+        gameManager = GameManager.Instance;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Awake()
@@ -30,10 +34,18 @@ public class CameraCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = Input.mousePosition; 
-        mousePos.z = -Camera.main.transform.position.z; 
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos); 
-        transform.position = worldPos; 
+        if(gameManager.isUIActive )
+        {
+            if(sr.enabled) sr.enabled = false;
+        }else
+        {
+            if (!sr.enabled) sr.enabled = true;
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = -Camera.main.transform.position.z;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            transform.position = worldPos;
+        }
+        
     }
     public void ScaleColliderCapture(float scale = 0f)
     {
