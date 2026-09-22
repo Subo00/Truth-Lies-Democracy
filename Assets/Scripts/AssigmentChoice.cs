@@ -9,9 +9,11 @@ public class AssigmentChoice : MonoBehaviour
     public Assignment assigment;
     [SerializeField] private TMP_Text description;
     [SerializeField] private Image box;
+    private GameManager gameManager;
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         description.text = assigment.Headline;
         description.text += assigment.Reward + " €";
     }

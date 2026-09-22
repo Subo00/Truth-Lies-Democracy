@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1098219586675100913}
   - component: {fileID: 1295036179379649355}
+  - component: {fileID: 5082997034610586073}
+  - component: {fileID: 1016844789171631312}
   m_Layer: 0
   m_Name: Police (2)
   m_TagString: Untagged
@@ -84,6 +86,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &5082997034610586073
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433856844831239179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.10049772, y: 2.3118904}
+  serializedVersion: 2
+  m_Radius: 1.0655754
+--- !u!114 &1016844789171631312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433856844831239179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca5d2a187325f643b965e3aa7e00d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 5
 --- !u!1 &1248307466533281033
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +144,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8418577227609719611}
   - component: {fileID: 829323512036776571}
+  - component: {fileID: 7788342090173010676}
+  - component: {fileID: 3226546520726933284}
   m_Layer: 0
   m_Name: Police
   m_TagString: Untagged
@@ -168,6 +220,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &7788342090173010676
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248307466533281033}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.08657932, y: 2.144188}
+  serializedVersion: 2
+  m_Radius: 1.2341671
+--- !u!114 &3226546520726933284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248307466533281033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca5d2a187325f643b965e3aa7e00d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 5
 --- !u!1 &5226864529521330345
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +278,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3090867345868978012}
   - component: {fileID: 1314573087292211116}
+  - component: {fileID: 8257690526108197533}
+  - component: {fileID: 5972859517820875714}
   m_Layer: 0
   m_Name: Police (1)
   m_TagString: Untagged
@@ -252,6 +354,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &8257690526108197533
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226864529521330345}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.11676021, y: 2.4202518}
+  serializedVersion: 2
+  m_Radius: 1.1878735
+--- !u!114 &5972859517820875714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226864529521330345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca5d2a187325f643b965e3aa7e00d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 5
 --- !u!1001 &5848776548072459096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,12 +470,18 @@ PrefabInstance:
       propertyPath: m_Direction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6229878798129633897, guid: 93374f9e9702bf34d904a8b5f32c2e2a, type: 3}
+      propertyPath: pointType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8305071402940886343, guid: 93374f9e9702bf34d904a8b5f32c2e2a, type: 3}
       propertyPath: m_Name
       value: Police Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 685459304682609268, guid: 93374f9e9702bf34d904a8b5f32c2e2a, type: 3}
+    - {fileID: 4343590003183434498, guid: 93374f9e9702bf34d904a8b5f32c2e2a, type: 3}
+    - {fileID: 6229878798129633897, guid: 93374f9e9702bf34d904a8b5f32c2e2a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3080552542959012806, guid: 93374f9e9702bf34d904a8b5f32c2e2a, type: 3}

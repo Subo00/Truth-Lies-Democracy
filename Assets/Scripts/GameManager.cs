@@ -53,13 +53,7 @@ public class GameManager : MonoBehaviour
             assigmentChoices[i].SetAssigment(allAssignments[i]);
         }*/
     }
-    private void Update()
-    {
-        if (AssigmentPicker.activeInHierarchy) //because fuck you that's why 
-        {
-            isUIActive = true;
-        }
-    }
+
     public void CheckValue(Dictionary<PointType, float> points)
     {
         bool isCompleted = true;
@@ -130,7 +124,6 @@ public class GameManager : MonoBehaviour
     {
         AssigmentPicker.SetActive(true);
         isUIActive = true;
-
         isUIActive = true;
     }
 

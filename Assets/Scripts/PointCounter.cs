@@ -42,12 +42,14 @@ public class PointCounter : MonoBehaviour
     public void CheckWin()
     {
         GameManager.Instance.CheckValue(points);
+        points.Clear();
+
     }
     public void PrintPoints()
     {
         foreach(var point in points)
         {
-            //Debug.Log("type shit: " + point.Key + " value: " +point.Value);
+            Debug.Log("type shit: " + point.Key + " value: " +point.Value);
         }
     }
 }

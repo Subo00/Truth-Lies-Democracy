@@ -4,93 +4,88 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PhotoCapture : MonoBehaviour
 {
     [Header("Photo Taker")]
-    [SerializeField] private Image photoDisplayArea;
-    [SerializeField] private GameObject photoFrameGO;
-    [SerializeField] private GameObject MoverGO;
-    [SerializeField] private Camera cam;
-    [SerializeField] private TMP_Text headline;
-    // [SerializeField] private int raysX = 5;
-    //[SerializeField] private int raysY = 4;
+
+
     [SerializeField] private float cameraWidth = 360f;
     [SerializeField] private float cameraHeight = 180f;
 
 
-    private GameManager gameManager;
-    private PointCounter pointCounter;
-    private Texture2D screenCapture;
-    private AudioSource clickSound;
 
+    [SerializeField] private PhotoConfirmer photoConfirmer;
+    [SerializeField] private UnityEvent onPhotoTaken;
+
+    private PointCounter pointCounter;
+    private Texture2D photoTexture;
+    private AudioSource clickSound;
+    private bool isTakingPhoto;
+    private Camera camToTakePhotoFrom;
 
     private void Start()
     {
+        camToTakePhotoFrom = Camera.main;
         clickSound = GetComponent<AudioSource>();
-        screenCapture = new Texture2D((int)cameraWidth, (int)cameraHeight, TextureFormat.RGB24, false);
-        gameManager = GameManager.Instance;
+        photoTexture = new Texture2D((int)cameraWidth, (int)cameraHeight, TextureFormat.RGB24, false);
         pointCounter = PointCounter.Instance;
-        if(pointCounter == null || gameManager == null)
+        if(pointCounter == null)
         {
-            Debug.LogError("PointCounter or GameManager are missing in the scene");
+            Debug.LogError("PointCounter missing in the scene");
         }
+        Camera.onPostRender += OnPostRenderCallback;
+    }
+
+    void OnDestroy()
+    {
+        Camera.onPostRender -= OnPostRenderCallback;
     }
 
     private void Update()
     {
-        if (gameManager.isUIActive) {
-            
-            return; }
-        //CastRayGrid();
-
-        if (Input.GetMouseButtonDown(0) && !gameManager.isUIActive)
+        if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(CapturePhoto());
+
+            isTakingPhoto = true;
+            //Debug.Log($"Screen: {Screen.width}x{Screen.height}, camera: {cameraWidth}x{cameraHeight}");
+
         }
     }
 
-    IEnumerator CapturePhoto()
+
+   void OnPostRenderCallback(Camera cam)
     {
-        gameManager.isUIActive = true;
-
-        yield return new WaitForEndOfFrame();
-
-        int xPos = (int)Input.mousePosition.x - (int)cameraWidth / 2;
-        int yPos = (int)Input.mousePosition.y - (int)cameraHeight / 2;
-
-        //TODO change this rect to captureo only the part of the screen not the full screen
-        //Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
-        Rect regionToRead = new Rect(xPos, yPos, cameraWidth, cameraHeight);
-        CameraCollider.Instance.CheckCollision();
-
-        screenCapture.ReadPixels(regionToRead, 0, 0, false);
-        screenCapture.Apply();
-
-        Sprite photoSprite = Sprite.Create(screenCapture, new Rect(0.0f, 0.0f, screenCapture.width, screenCapture.height), new Vector2(0.5f, 0.5f), 100.0f);
-        photoDisplayArea.sprite = photoSprite;
-
-        photoFrameGO.SetActive(true);
-        MoverGO.SetActive(false);
-        headline.text = gameManager.GetCurrentAssignment().Headline;
-        if (clickSound != null)
+        if (isTakingPhoto)
         {
-            clickSound.Play();
+            // Check whether the Camera that just finished rendering is the one you want to take a screen grab from
+            if (cam == camToTakePhotoFrom)
+            {
+                // Define the parameters for the ReadPixels operation
+                Rect regionToReadFrom = new Rect(0, 0, Screen.width, Screen.height);
+                int xPosToWriteTo = 0;
+                int yPosToWriteTo = 0;
+                bool updateMipMapsAutomatically = false;
+
+                // Copy the pixels from the Camera's render target to the texture
+                photoTexture.ReadPixels(regionToReadFrom, xPosToWriteTo, yPosToWriteTo, updateMipMapsAutomatically);
+                // Upload texture data to the GPU, so the GPU renders the updated texture
+                photoTexture.Apply();
+
+                photoConfirmer.currentPhoto = Sprite.Create(photoTexture, new Rect(0.0f, 0.0f, photoTexture.width, photoTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+
+                onPhotoTaken.Invoke();
+                isTakingPhoto = false;
+            }
+
         }
-
-
     }
-
-   
 
     private void RemovePhoto()
     {
-        screenCapture.Reinitialize((int)cameraWidth, (int)cameraHeight);
-        screenCapture.Apply();
-        gameManager.isUIActive = false;
-        photoDisplayArea.sprite = null;
-        photoFrameGO.SetActive(false);
-        MoverGO.SetActive(true);
+        photoTexture.Reinitialize((int)cameraWidth, (int)cameraHeight);
+        photoTexture.Apply();
     }
 
    /* private void CastRayGrid()
