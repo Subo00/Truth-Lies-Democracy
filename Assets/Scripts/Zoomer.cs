@@ -6,7 +6,7 @@ public class Zoomer : MonoBehaviour
 {
     private CameraCollider cameraCollider;
     
-    [SerializeField] private float maxSize = 5f;
+    [SerializeField] private float maxSize = 5.4f;
     [SerializeField] private float minSize = 3f;
     [SerializeField] private float zoomSpeed = 5f;
 
