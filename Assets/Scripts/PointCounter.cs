@@ -7,6 +7,7 @@ using UnityEngine;
 public enum PointType { None, Protester, Fire, Child, Adult, Police, Nature, Sign, BrokenGlass, LocalShop, Grafiti}
 public class PointCounter : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     public static PointCounter Instance;
     private void Awake()
     {
@@ -41,7 +42,7 @@ public class PointCounter : MonoBehaviour
     }
     public void CheckWin()
     {
-        GameManager.Instance.CheckValue(points);
+        gameManager.CheckValue(points);
         points.Clear();
 
     }

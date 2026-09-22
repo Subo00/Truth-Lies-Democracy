@@ -13,7 +13,11 @@ public class AssigmentChoice : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
+        gameManager = FindAnyObjectByType<GameManager>().GetComponent<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogWarning("Could not find game manager!");
+        }
         description.text = assigment.Headline;
         description.text += assigment.Reward + " €";
     }
@@ -22,15 +26,19 @@ public class AssigmentChoice : MonoBehaviour
     {
         if(assigment.Ethics_On_Accept < 0 )
         {
-            GameManager.Instance.ChangeEthics(assigment.Ethics_On_Accept);
+            gameManager.ChangeEthics(assigment.Ethics_On_Accept);
         }
-        GameManager.Instance.AddAssigments(assigment);
-        //gameObject.SetActive(false);
+        gameManager.AddAssigments(assigment);
     }
 
     private void OnEnable()
     {
-        int result = GameManager.Instance.CheckAssignments(assigment);
+        if (gameManager == null)
+        {
+            gameManager = FindAnyObjectByType<GameManager>().GetComponent<GameManager>();
+            
+        }
+        int result = gameManager.CheckAssignments(assigment);
         switch (result)
         {
             case 0:
@@ -46,12 +54,5 @@ public class AssigmentChoice : MonoBehaviour
 
         }
     }
-    /*
-    public void Decline()
-    {
-        GameManager.Instance.ChangeEthics(assigment.Ethics_On_Reject);
-        GameManager.Instance.RemoveAssigment();
 
-        gameObject.SetActive(false);
-    }*/
 }

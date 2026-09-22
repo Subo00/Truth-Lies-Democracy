@@ -9,9 +9,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    [HideInInspector] public bool isUIActive = false;
-
     public Assignment[] allAssignments;
     private Assignment currentAssigment;
     private Queue<Assignment> queuOfAssignments = new Queue<Assignment>();
@@ -28,26 +25,13 @@ public class GameManager : MonoBehaviour
     public int neededGold = 1500;
     public int currentGold = 0;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
     private void Start()
     {
-        //currentAssigment = allAssignments[0];
-        //Debug.Log(currentAssigment.Headline);
+
         currentEthics = maxEthics / 2;
 
-        ShowAssigments();
-        
+        //AssigmentPicker.SetActive(true);
+
         /*for(int i = 0; i < 3; i++)
         {
             assigmentChoices[i].SetAssigment(allAssignments[i]);
@@ -57,32 +41,38 @@ public class GameManager : MonoBehaviour
     public void CheckValue(Dictionary<PointType, float> points)
     {
         bool isCompleted = true;
-        foreach(Goal goal in currentAssigment.goals)
+
+        if ( currentAssigment != null)
         {
-            if (points.TryGetValue(goal.pointType, out float value) == false  || goal.neededValue > value)
+            foreach (Goal goal in currentAssigment.goals)
             {
-                isCompleted = false; 
-                break;
+                if (points.TryGetValue(goal.pointType, out float value) == false || goal.neededValue > value)
+                {
+                    isCompleted = false;
+                    break;
+                }
+            }
+
+
+            if (isCompleted)
+            {
+
+                Debug.Log("You got paid " + currentAssigment.Reward + " gold");
+                queueOfCompleted.Enqueue(currentAssigment);
+                //add gold and remove assigment
+            }
+            else
+            {
+                Debug.Log("You get nothing, good day sir!");
+                queueOfFaild.Enqueue(currentAssigment);
+                //remove assigment
             }
         }
-
-
-        if (isCompleted)
-        {
-            Debug.Log("You got paid " + currentAssigment.Reward + " gold");
-            queueOfCompleted.Enqueue(currentAssigment);
-            //add gold and remove assigment
-        }
-        else
-        {
-            Debug.Log("You get nothing, good day sir!");
-            queueOfFaild.Enqueue(currentAssigment); 
-            //remove assigment
-        }
+        
 
         if(queuOfAssignments.Count == 0)
         {
-            ShowAssigments();
+            AssigmentPicker.SetActive(true);
         }
         else
         {
@@ -115,17 +105,10 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         AssigmentPicker.SetActive(false);
-        isUIActive = false;
         numOffAssigments = 3;
         currentAssigment = queuOfAssignments.Dequeue();
     }
-
-    private void ShowAssigments()
-    {
-        AssigmentPicker.SetActive(true);
-        isUIActive = true;
-        isUIActive = true;
-    }
+    
 
     public Assignment GetCurrentAssignment()
     {
